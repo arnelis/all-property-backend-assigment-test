@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../src/BaseTask.php';
+require_once 'BaseTask.php';
 
 /**
  * 

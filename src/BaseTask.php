@@ -1,18 +1,32 @@
 <?php
 
+/*
+ * Resuls as interger constants for faster processing. 
+ * Constants will be replaced to textual values by 
+ * BaseTask::getResultsAsString(const) method.  
+ */
 const R_FIZZ = -1;
 const R_BUZZ = -2;
 const R_BAZZ = -3;
 const R_FZBZ = -4;
 
+/**
+ * Base parent class for a common functionality for all two tasks. 
+ * 
+ * @author Arnoldas
+ *
+ */
 class BaseTask {
 	
 	/**
+	 * Method will try to find and validate arguments in given
+	 * assoc array. In case all two arguments are found and both 
+	 * arguments are corent will return array values as 
+	 * array($val_f, $val_t), otherwise will be returned a FALSE; 
 	 * 
-	 * @param unknown $options
-	 * @param unknown $arg_f
-	 * @param unknown $arg_t
-	 * @throws Exception
+	 * @param assoc array $options
+	 * @param integer $arg_f
+	 * @param integer $arg_t
 	 * @return multitype:string
 	 */
 	public function validateParams($options, $arg_f, $arg_t) {
@@ -58,29 +72,31 @@ class BaseTask {
 	}
 	
 	/**
+	 * Function will loop the array of and replace
+	 * any accurance of constancts R_* with textutal
+	 * representation and concat array values to string
+	 * joined by single white space.  
 	 * 
 	 * @param array $results
 	 * @return string
 	 */
 	public function getResultsAsString($results) {
-		$return = "";
-		foreach ($results as $result) {
-			switch ($result) {
+		foreach ($results as $k=>$v) {			
+			switch ($v) {
 				case R_FIZZ:
-					$result = "Fizz";
+					$results[$k] = "Fizz";
 					break;
 				case R_BUZZ:
-					$result = "Buzz";
+					$results[$k] = "Buzz";
 					break;
 				case R_BAZZ:
-					$result = "Bazz";
+					$results[$k] = "Bazz";
 					break;
 				case R_FZBZ:
-					$result = "FizzBuzz";
+					$results[$k] = "FizzBuzz";
 					break;
 			}
-			$return .=  $result . " ";
 		}
-		return rtrim($return);
+		return join(" ", $results);
 	}
 }

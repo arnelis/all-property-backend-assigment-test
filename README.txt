@@ -27,6 +27,7 @@ SOLUTION
 	> php runTask1_1.php -f 12 -t 16
 	> php runTask1_2.php -f 4 -t 11
 3.2) To execute test cases:
-	> phpUnit tests\BaseTaskTest.php
-	> phpUnit tests\Task1_1Test.php
-	> phpUnit tests\Task1_2Test.php
+    > cd tests
+	> phpUnit BaseTaskTest.php
+	> phpUnit Task1_1Test.php
+	> phpUnit Task1_2Test.php
